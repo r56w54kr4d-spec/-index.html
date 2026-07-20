@@ -30,18 +30,297 @@
 </main>
 <nav><button class="nav active" onclick="go('home',this)"><span>🏠</span>Home</button><button class="nav" onclick="go('chat',this)"><span>💬</span>Chat</button><button class="nav" onclick="go('memories',this)"><span>📸</span>Memories</button><button class="nav" onclick="go('future',this)"><span>🌍</span>Future</button><button class="nav" onclick="go('more',this)"><span>❤️</span>More</button></nav>
 </div>
+
 <script>
-  const SUPABASE_URL = 'https://ewxjtnpcyxofriatqn.supabase.co';
-const SUPABASE_ANON_KEY = sb_publishable_29IqpItQbH_z-4bzo0tQ5w_inTTGH50
-function go(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
-function clocks(){uk.textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'});zm.textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Lusaka'})}clocks();setInterval(clocks,1000)
-document.querySelectorAll('.mood').forEach(x=>x.onclick=()=>{document.querySelectorAll('.mood').forEach(y=>y.classList.remove('active'));x.classList.add('active')})
-const qs=["What's one thing you're looking forward to doing together?","What's your favourite memory of us?","Where should we travel together next?","What's one thing you appreciate about me today?","What would our perfect day together look like?"];let qi=0;function nextQ(){qi=(qi+1)%qs.length;question.textContent=qs[qi]}
-function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-let msgs=JSON.parse(localStorage.atmMsgs||'[]');function renderChat(){chatbox.innerHTML=msgs.map(x=>'<div class="bubble">'+esc(x)+'</div>').join('');chatbox.scrollTop=chatbox.scrollHeight}function send(){let v=message.value.trim();if(!v)return;msgs.push(v);localStorage.atmMsgs=JSON.stringify(msgs);message.value='';renderChat()}renderChat()
-let mem=JSON.parse(localStorage.atmMem||'[]');function renderMem(){memList.innerHTML=mem.map(x=>'<div class="item"><b>📸 '+esc(x.t)+'</b><p class="small">'+esc(x.d)+'</p></div>').join('')||'<div class="empty">Your memories will appear here ❤️</div>'}function addMemory(){let t=mt.value.trim(),d=md.value.trim();if(!t)return;mem.unshift({t,d});localStorage.atmMem=JSON.stringify(mem);mt.value='';md.value='';renderMem()}renderMem()
-let fut=JSON.parse(localStorage.atmFut||'[]');function renderF(){futureList.innerHTML=fut.map((x,i)=>'<div class="item row"><span>🌍 '+esc(x)+'</span><button class="btn" onclick="fut.splice('+i+',1);localStorage.atmFut=JSON.stringify(fut);renderF()">✓</button></div>').join('')||'<div class="empty">Add your dreams and plans together.</div>'}function addFuture(){let v=futureInput.value.trim();if(!v)return;fut.push(v);localStorage.atmFut=JSON.stringify(fut);futureInput.value='';renderF()}renderF()
-function saveNote(){let v=note.value.trim();if(v){localStorage.atmNote=v;alert('💌 Love note saved')}}
+const SUPABASE_URL = 'https://ewxjtnpcyxofriatqn.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_29IqpItQbH_z-4bz0QtQ5w_inTTGH50';
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+function go(id, b) {
+  document.querySelectorAll('.page').forEach(x =>
+    x.classList.remove('active')
+  );
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.nav').forEach(x =>
+    x.classList.remove('active')
+  );
+
+  if (b) b.classList.add('active');
+}
+
+function clocks() {
+  const uk = document.getElementById('uk');
+
+  if (uk) {
+    uk.textContent = new Date().toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Europe/London'
+    });
+  }
+
+  const zm = document.getElementById('zm');
+
+  if (zm) {
+    zm.textContent = new Date().toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Africa/Lusaka'
+    });
+  }
+}
+
+setInterval(clocks, 1000);
+clocks();
+
+document.querySelectorAll('.mood').forEach(x => {
+  x.onclick = () => {
+    document.querySelectorAll('.mood').forEach(y =>
+      y.classList.remove('active')
+    );
+    x.classList.add('active');
+  };
+});
+
+const qs = [
+  "What's one thing you're looking forward to doing together?",
+  "What's your favourite memory of us?",
+  "Where should we travel together next?",
+  "What's one thing you appreciate about me today?",
+  "What would our perfect day together look like?"
+];
+
+let qi = 0;
+
+function nextQ() {
+  const q = document.getElementById('question');
+
+  if (q) {
+    qi = (qi + 1) % qs.length;
+    q.textContent = qs[qi];
+  }
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[c]));
+}
+
+/* =========================
+   CHAT
+========================= */
+
+async function loadMessages() {
+  const chatbox = document.getElementById('chatbox');
+
+  if (!chatbox) return;
+
+  const { data, error } = await supabaseClient
+    .from('Messages')
+    .select('*')
+    .order('created_at', { ascending: true });
+
+  if (error) {
+    console.error('Could not load messages:', error);
+    chatbox.innerHTML =
+      '<div class="bubble">Unable to load messages.</div>';
+    return;
+  }
+
+  chatbox.innerHTML = '';
+
+  data.forEach(row => {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+
+    const sender = row.sender || 'Message';
+
+    bubble.innerHTML =
+      '<b>' + esc(sender) + '</b><br>' +
+      esc(row.message || '');
+
+    chatbox.appendChild(bubble);
+  });
+
+  chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+async function send() {
+  const input = document.getElementById('message');
+
+  if (!input) return;
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  const sender = localStorage.getItem('atmSender') || 'Nik';
+
+  const { error } = await supabaseClient
+    .from('Messages')
+    .insert([
+      {
+        sender: sender,
+        message: text
+      }
+    ]);
+
+  if (error) {
+    console.error('Could not send message:', error);
+    alert('Message could not be sent. Please try again.');
+    return;
+  }
+
+  input.value = '';
+
+  await loadMessages();
+}
+
+/* Press Enter to send message */
+const messageInput = document.getElementById('message');
+
+if (messageInput) {
+  messageInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      send();
+    }
+  });
+}
+
+/* Automatically refresh chat every 5 seconds */
+setInterval(loadMessages, 5000);
+
+/* Load chat when page opens */
+loadMessages();
+
+
+/* =========================
+   MEMORIES
+========================= */
+
+let mem = JSON.parse(localStorage.getItem('atmMem') || '[]');
+
+function renderMem() {
+  const memList = document.getElementById('memList');
+
+  if (!memList) return;
+
+  memList.innerHTML = mem.map(x =>
+    '<div class="item">' +
+    '<b>📸 ' + esc(x.t || '') + '</b>' +
+    '<p>' + esc(x.d || '') + '</p>' +
+    '</div>'
+  ).join('');
+}
+
+function addMemory() {
+  const title = document.getElementById('mt');
+  const description = document.getElementById('md');
+
+  if (!title || !description) return;
+
+  const t = title.value.trim();
+  const d = description.value.trim();
+
+  if (!t) return;
+
+  mem.push({
+    t: t,
+    d: d
+  });
+
+  localStorage.setItem('atmMem', JSON.stringify(mem));
+
+  title.value = '';
+  description.value = '';
+
+  renderMem();
+}
+
+
+/* =========================
+   FUTURE TOGETHER
+========================= */
+
+let fut = JSON.parse(localStorage.getItem('atmFut') || '[]');
+
+function renderFut() {
+  const futureList = document.getElementById('futureList');
+
+  if (!futureList) return;
+
+  futureList.innerHTML = fut.map(x =>
+    '<div class="item row">' +
+    '<span>🌍 ' + esc(x) + '</span>' +
+    '</div>'
+  ).join('');
+}
+
+function addFuture() {
+  const input = document.getElementById('futureInput');
+
+  if (!input) return;
+
+  const value = input.value.trim();
+
+  if (!value) return;
+
+  fut.push(value);
+
+  localStorage.setItem('atmFut', JSON.stringify(fut));
+
+  input.value = '';
+
+  renderFut();
+}
+
+
+/* =========================
+   LOVE NOTE
+========================= */
+
+function saveNote() {
+  const note = document.getElementById('note');
+
+  if (!note) return;
+
+  const value = note.value.trim();
+
+  if (value) {
+    localStorage.setItem('atmNote', value);
+    alert('💌 Love note saved');
+  }
+}
+
+
+/* =========================
+   STARTUP
+========================= */
+
+renderMem();
+renderFut();
+
+const savedNote = localStorage.getItem('atmNote');
+
+if (savedNote) {
+  const note = document.getElementById('note');
+
+  if (note) {
+    note.value = savedNote;
+  }
+}
 </script>
 </body>
 </html>
