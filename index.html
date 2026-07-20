@@ -1,326 +1,929 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f8edf4">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#d86b9b">
 <title>Always Together ❤️</title>
+
 <style>
-:root{--pink:#d86b9b;--dark:#6d3857;--bg:#fff9fc;--line:#efdce7;--muted:#806f79}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#352b31;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:88px}header{padding:28px 20px 12px}.title{font-size:30px;font-weight:800;color:var(--dark)}.sub{color:var(--muted);margin-top:4px}main{padding:0 16px}.hero,.card,.item{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 8px 24px #6d385710}.hero{padding:22px;margin:10px 0 15px;background:linear-gradient(135deg,#fff,#f9e8f1)}.couple{display:flex;align-items:center;justify-content:center;gap:16px}.person{text-align:center}.avatar{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:#f4d8e5;color:var(--dark);font-size:26px;font-weight:800;border:3px solid white}.heart{font-size:25px;color:var(--pink)}.small{font-size:13px;color:var(--muted);line-height:1.45}.tag{text-align:center;margin-top:14px;color:var(--dark);font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{padding:17px}.wide{grid-column:1/-1}.card h3{margin:0 0 8px;font-size:17px}.big{font-size:22px;font-weight:800;color:var(--dark)}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.btn{border:0;border-radius:15px;padding:12px 15px;background:var(--pink);color:white;font-weight:750;cursor:pointer}.full{width:100%;margin-top:10px}.moods{display:flex;gap:7px;flex-wrap:wrap}.mood{border:0;background:#fff3f8;border-radius:13px;padding:8px;font-size:24px}.mood.active{outline:2px solid var(--pink)}.page{display:none}.page.active{display:block}.list{display:flex;flex-direction:column;gap:10px}.item{padding:15px}input,textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:11px;font:inherit;background:#fff}textarea{min-height:80px;margin-top:8px}.form{display:flex;gap:8px;margin-top:9px}.form input{flex:1}.chat{height:52vh;overflow:auto;padding:4px}.bubble{max-width:80%;padding:11px 14px;border-radius:18px;background:#f4a8c8;margin:7px 0;margin-left:auto}.empty{text-align:center;color:var(--muted);padding:30px}nav{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:8px;padding:8px 8px env(safe-area-inset-bottom);z-index:10}.nav{border:0;background:none;color:var(--muted);font-size:11px;padding:4px 10px;cursor:pointer}.nav span{display:block;font-size:21px}.nav.active{color:var(--pink);font-weight:800}@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}.wide{grid-column:span 3}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fff9fc;
+  color: #4a3040;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app {
+  max-width: 950px;
+  margin: auto;
+  padding-bottom: 100px;
+}
+
+header {
+  padding: 25px 20px 15px;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #743b5b;
+}
+
+.sub {
+  color: #806f79;
+  margin-top: 5px;
+}
+
+.page {
+  display: none;
+  padding: 10px 20px;
+}
+
+.page.active {
+  display: block;
+}
+
+.hero,
+.card {
+  background: white;
+  border: 1px solid #efdce7;
+  border-radius: 25px;
+  padding: 25px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 25px rgba(100, 50, 80, 0.06);
+}
+
+.couple {
+  text-align: center;
+}
+
+.people {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.person {
+  text-align: center;
+}
+
+.avatar {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #f4dce8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: bold;
+  margin: auto;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heart {
+  font-size: 35px;
+}
+
+.big {
+  font-size: 28px;
+  font-weight: 800;
+  color: #743b5b;
+}
+
+.small {
+  color: #806f79;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+button {
+  border: 0;
+  border-radius: 15px;
+  padding: 12px 18px;
+  background: #d86b9b;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.moods {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mood {
+  font-size: 25px;
+  background: #fff0f6;
+  color: #4a3040;
+  padding: 12px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  margin: 7px 0;
+  border: 1px solid #ead6e1;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.chat {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 12px 15px;
+  border-radius: 18px;
+  margin: 8px 0;
+  max-width: 80%;
+  background: #f6e8ef;
+}
+
+.message.me {
+  margin-left: auto;
+  background: #d86b9b;
+  color: white;
+}
+
+.message small {
+  display: block;
+  opacity: 0.7;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.memory {
+  border: 1px solid #efdce7;
+  border-radius: 18px;
+  padding: 15px;
+  margin: 15px 0;
+  background: #fffafd;
+}
+
+.memory img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.memory-title {
+  font-weight: bold;
+  font-size: 19px;
+  color: #743b5b;
+}
+
+.future-item,
+.note-item {
+  background: #fff5f9;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #efdce7;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+  z-index: 100;
+}
+
+.nav {
+  background: transparent;
+  color: #806f79;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.nav.active {
+  color: #d04f88;
+  font-weight: bold;
+}
+
+.file-label {
+  display: inline-block;
+  background: #f4dce8;
+  color: #743b5b;
+  padding: 12px 18px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+#memoryPhoto {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .people {
+    gap: 25px;
+  }
+
+  .title {
+    font-size: 27px;
+  }
+
+  nav {
+    gap: 0;
+  }
+
+  .nav {
+    font-size: 12px;
+    padding: 7px;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
-<header><div class="title">Always Together ❤️</div><div class="sub">Nik & Threasa — two places, one love.</div></header>
+
+<header>
+  <div class="title">Always Together ❤️</div>
+  <div class="sub">Nik & Threasa — two places, one love.</div>
+</header>
+
 <main>
+
+<!-- HOME -->
 <section id="home" class="page active">
-<div class="hero"><div class="couple"><div class="person"><div class="avatar">N</div><b>Nik</b><div class="small">Liverpool 🇬🇧</div></div><div class="heart">♥</div><div class="person"><div class="avatar">T</div><b>Threasa</b><div class="small">Lusaka 🇿🇲</div></div></div><div class="tag">Miles apart, but always close at heart ❤️</div></div>
-<div class="grid">
-<div class="card wide"><h3>📍 How Far Apart Are We?</h3><div class="big">≈ 5,200 miles</div><div class="small">Liverpool, UK → Lusaka, Zambia</div><div class="row" style="margin-top:12px"><span>🇬🇧 Liverpool<br><b id="uk">—</b></span><span>🇿🇲 Lusaka<br><b id="zm">—</b></span></div></div>
-<div class="card"><h3>😊 Mood</h3><div class="moods"><button class="mood">😊</button><button class="mood">🥰</button><button class="mood">❤️</button><button class="mood">😔</button><button class="mood">😴</button></div></div>
-<div class="card"><h3>💕 Virtual Hug</h3><div class="small">Send a little reminder that you're thinking of each other.</div><button class="btn full" onclick="alert('💕 Virtual Hug Sent to Threasa!')">Send Hug</button></div>
-<div class="card wide"><h3>❓ Daily Question</h3><div id="question" class="big" style="font-size:18px">What's one thing you're looking forward to doing together?</div><button class="btn full" onclick="nextQ()">New Question</button></div>
-</div></section>
-<section id="chat" class="page"><h2>💬 Private Chat</h2><div class="card"><div id="chatbox" class="chat"></div><div class="form"><input id="message" placeholder="Write a message…"><button class="btn" onclick="send()">Send</button></div><p class="small">Prototype: messages are saved on this device only. Shared syncing can be added later.</p></div></section>
-<section id="memories" class="page"><h2>📸 Memories</h2><div class="card"><input id="mt" placeholder="Memory title"><textarea id="md" placeholder="Tell the story…"></textarea><button class="btn full" onclick="addMemory()">Save Memory</button></div><div id="memList" class="list" style="margin-top:12px"></div></section>
-<section id="future" class="page"><h2>🌍 Future Together</h2><div class="card"><input id="futureInput" placeholder="Something we want to do together…"><button class="btn full" onclick="addFuture()">Add to our future</button></div><div id="futureList" class="list" style="margin-top:12px"></div></section>
-<section id="more" class="page"><h2>❤️ More</h2><div class="list"><div class="item"><b>💌 Love Notes</b><p class="small">Write something special for Threasa.</p><textarea id="note" placeholder="Dear Threasa…"></textarea><button class="btn full" onclick="saveNote()">Save Love Note</button></div><div class="item"><b>❤️ Love Wall</b><p class="small">Your favourite photos, quotes and memories.</p></div><div class="item"><b>📅 Important Dates</b><p class="small">Birthdays, anniversaries and visits.</p></div><div class="item"><b>🎵 Our Playlist</b><p class="small">Songs that belong to your story.</p></div><div class="item"><b>🔒 Secret Vault</b><p class="small">A private section placeholder. Real secure storage requires a protected backend.</p></div></div></section>
-</main>
-<nav><button class="nav active" onclick="go('home',this)"><span>🏠</span>Home</button><button class="nav" onclick="go('chat',this)"><span>💬</span>Chat</button><button class="nav" onclick="go('memories',this)"><span>📸</span>Memories</button><button class="nav" onclick="go('future',this)"><span>🌍</span>Future</button><button class="nav" onclick="go('more',this)"><span>❤️</span>More</button></nav>
+
+<div class="hero">
+  <div class="people">
+
+    <div class="person">
+      <div class="avatar">N</div>
+      <b>Nik</b>
+      <div class="small">Liverpool 🇬🇧</div>
+    </div>
+
+    <div class="heart">❤️</div>
+
+    <div class="person">
+      <div class="avatar">T</div>
+      <b>Threasa</b>
+      <div class="small">Lusaka 🇿🇲</div>
+    </div>
+
+  </div>
+
+  <h3 style="text-align:center;margin-top:25px;">
+    Miles apart, but always close at heart ❤️
+  </h3>
 </div>
 
+<div class="card">
+  <h3>📍 How Far Apart Are We?</h3>
+  <div class="big">≈ 5,200 miles</div>
+  <div class="small">Liverpool, UK → Lusaka, Zambia</div>
+</div>
+
+<div class="grid">
+
+<div class="card">
+  <h3>😊 Mood</h3>
+
+  <div class="moods">
+    <button class="mood" onclick="setMood('😊')">😊</button>
+    <button class="mood" onclick="setMood('🥰')">🥰</button>
+    <button class="mood" onclick="setMood('❤️')">❤️</button>
+    <button class="mood" onclick="setMood('😔')">😔</button>
+  </div>
+
+  <p id="currentMood" class="small"></p>
+</div>
+
+<div class="card">
+  <h3>💕 Virtual Hug</h3>
+  <p class="small">Send a little reminder that you're thinking of each other.</p>
+  <button onclick="sendHug()">Send Virtual Hug 🤗</button>
+  <p id="hugMessage"></p>
+</div>
+
+</div>
+
+<div class="card">
+  <h3>❓ Daily Question</h3>
+  <div id="question" class="big" style="font-size:20px;">
+    What's one thing you're looking forward to doing together?
+  </div>
+</div>
+
+</section>
+
+
+<!-- CHAT -->
+<section id="chat" class="page">
+
+<h2>💬 Private Chat</h2>
+
+<div class="card">
+
+<div id="chatbox" class="chat"></div>
+
+<input id="chatInput" placeholder="Write a message...">
+
+<button onclick="sendMessage()">Send Message 💕</button>
+
+<button onclick="clearChat()">Clear Chat</button>
+
+</div>
+
+</section>
+
+
+<!-- MEMORIES -->
+<section id="memories" class="page">
+
+<h2>📸 Memories</h2>
+
+<div class="card">
+
+<input id="memoryTitle" placeholder="Memory title">
+
+<textarea id="memoryText" placeholder="Write something about this memory..."></textarea>
+
+<label class="file-label" for="memoryPhoto">
+  📷 Add a Photo
+</label>
+
+<input id="memoryPhoto" type="file" accept="image/*">
+
+<button onclick="saveMemory()">Save Memory ❤️</button>
+
+<div id="memoryList"></div>
+
+</div>
+
+</section>
+
+
+<!-- FUTURE -->
+<section id="future" class="page">
+
+<h2>🌍 Future Together</h2>
+
+<div class="card">
+
+<input id="futureInput" placeholder="Something we want to do together...">
+
+<button onclick="addFuture()">Add to Our Future ❤️</button>
+
+<div id="futureList"></div>
+
+</div>
+
+</section>
+
+
+<!-- MORE -->
+<section id="more" class="page">
+
+<h2>❤️ More</h2>
+
+<div class="card">
+
+<h3>💌 Love Notes</h3>
+
+<textarea id="loveNote" placeholder="Write a special love note..."></textarea>
+
+<button onclick="saveLoveNote()">Save Love Note 💌</button>
+
+<div id="loveNotes"></div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<nav>
+
+<button class="nav active" onclick="go('home',this)">
+🏠<br>Home
+</button>
+
+<button class="nav" onclick="go('chat',this)">
+💬<br>Chat
+</button>
+
+<button class="nav" onclick="go('memories',this)">
+📸<br>Memories
+</button>
+
+<button class="nav" onclick="go('future',this)">
+🌍<br>Future
+</button>
+
+<button class="nav" onclick="go('more',this)">
+❤️<br>More
+</button>
+
+</nav>
+
+</div>
+
+
 <script>
-const SUPABASE_URL = 'https://ewxjtnpcyxofriatqn.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_29IqpItQbH_z-4bz0QtQ5w_inTTGH50';
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
+/* NAVIGATION */
 
-function go(id, b) {
-  document.querySelectorAll('.page').forEach(x =>
-    x.classList.remove('active')
-  );
+function go(id, button) {
+
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
 
   document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('.nav').forEach(x =>
-    x.classList.remove('active')
-  );
-
-  if (b) b.classList.add('active');
-}
-
-function clocks() {
-  const uk = document.getElementById('uk');
-
-  if (uk) {
-    uk.textContent = new Date().toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'Europe/London'
-    });
-  }
-
-  const zm = document.getElementById('zm');
-
-  if (zm) {
-    zm.textContent = new Date().toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'Africa/Lusaka'
-    });
-  }
-}
-
-setInterval(clocks, 1000);
-clocks();
-
-document.querySelectorAll('.mood').forEach(x => {
-  x.onclick = () => {
-    document.querySelectorAll('.mood').forEach(y =>
-      y.classList.remove('active')
-    );
-    x.classList.add('active');
-  };
-});
-
-const qs = [
-  "What's one thing you're looking forward to doing together?",
-  "What's your favourite memory of us?",
-  "Where should we travel together next?",
-  "What's one thing you appreciate about me today?",
-  "What would our perfect day together look like?"
-];
-
-let qi = 0;
-
-function nextQ() {
-  const q = document.getElementById('question');
-
-  if (q) {
-    qi = (qi + 1) % qs.length;
-    q.textContent = qs[qi];
-  }
-}
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  }[c]));
-}
-
-/* =========================
-   CHAT
-========================= */
-
-async function loadMessages() {
-  const chatbox = document.getElementById('chatbox');
-
-  if (!chatbox) return;
-
-  const { data, error } = await supabaseClient
-    .from('Messages')
-    .select('*')
-    .order('created_at', { ascending: true });
-
-  if (error) {
-    console.error('Could not load messages:', error);
-    chatbox.innerHTML =
-      '<div class="bubble">Unable to load messages.</div>';
-    return;
-  }
-
-  chatbox.innerHTML = '';
-
-  data.forEach(row => {
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-
-    const sender = row.sender || 'Message';
-
-    bubble.innerHTML =
-      '<b>' + esc(sender) + '</b><br>' +
-      esc(row.message || '');
-
-    chatbox.appendChild(bubble);
+  document.querySelectorAll('.nav').forEach(nav => {
+    nav.classList.remove('active');
   });
 
-  chatbox.scrollTop = chatbox.scrollHeight;
+  button.classList.add('active');
 }
 
-async function send() {
-  const input = document.getElementById('message');
 
-  if (!input) return;
+/* MOOD */
+
+function setMood(mood) {
+
+  localStorage.setItem('mood', mood);
+
+  document.getElementById('currentMood').textContent =
+    'Current mood: ' + mood;
+
+}
+
+
+/* VIRTUAL HUG */
+
+function sendHug() {
+
+  document.getElementById('hugMessage').textContent =
+    '🤗 Virtual hug sent! ❤️';
+
+}
+
+
+/* CHAT */
+
+function loadChat() {
+
+  const messages =
+    JSON.parse(localStorage.getItem('chatMessages') || '[]');
+
+  const box = document.getElementById('chatbox');
+
+  box.innerHTML = '';
+
+  messages.forEach(message => {
+
+    const div = document.createElement('div');
+
+    div.className = 'message ' +
+      (message.sender === 'Nik' ? 'me' : '');
+
+    div.innerHTML =
+      '<b>' + message.sender + '</b><br>' +
+      message.text +
+      '<small>' + message.time + '</small>';
+
+    box.appendChild(div);
+
+  });
+
+  box.scrollTop = box.scrollHeight;
+}
+
+
+function sendMessage() {
+
+  const input =
+    document.getElementById('chatInput');
 
   const text = input.value.trim();
 
   if (!text) return;
 
-  const sender = localStorage.getItem('atmSender') || 'Nik';
+  const messages =
+    JSON.parse(localStorage.getItem('chatMessages') || '[]');
 
-  const { error } = await supabaseClient
-    .from('Messages')
-    .insert([
-      {
-        sender: sender,
-        message: text
-      }
-    ]);
+  messages.push({
 
-  if (error) {
-    console.error('Could not send message:', error);
-    alert('Message could not be sent. Please try again.');
-    return;
-  }
+    sender: 'Nik',
+
+    text: text,
+
+    time: new Date().toLocaleString()
+
+  });
+
+  localStorage.setItem(
+    'chatMessages',
+    JSON.stringify(messages)
+  );
 
   input.value = '';
 
-  await loadMessages();
+  loadChat();
+
 }
 
-/* Press Enter to send message */
-const messageInput = document.getElementById('message');
 
-if (messageInput) {
-  messageInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      send();
-    }
+function clearChat() {
+
+  if (confirm('Delete all chat messages?')) {
+
+    localStorage.removeItem('chatMessages');
+
+    loadChat();
+
+  }
+
+}
+
+
+/* MEMORIES */
+
+function saveMemory() {
+
+  const title =
+    document.getElementById('memoryTitle').value.trim();
+
+  const text =
+    document.getElementById('memoryText').value.trim();
+
+  const photo =
+    document.getElementById('memoryPhoto').files[0];
+
+  if (!title && !text && !photo) {
+
+    alert('Please add a title, message or photo.');
+
+    return;
+
+  }
+
+  if (photo) {
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+      saveMemoryData(
+        title,
+        text,
+        e.target.result
+      );
+
+    };
+
+    reader.readAsDataURL(photo);
+
+  } else {
+
+    saveMemoryData(title, text, '');
+
+  }
+
+}
+
+
+function saveMemoryData(title, text, image) {
+
+  const memories =
+    JSON.parse(localStorage.getItem('memories') || '[]');
+
+  memories.unshift({
+
+    title: title,
+
+    text: text,
+
+    image: image,
+
+    date: new Date().toLocaleDateString()
+
   });
+
+  localStorage.setItem(
+    'memories',
+    JSON.stringify(memories)
+  );
+
+  document.getElementById('memoryTitle').value = '';
+
+  document.getElementById('memoryText').value = '';
+
+  document.getElementById('memoryPhoto').value = '';
+
+  renderMemories();
+
+  alert('❤️ Memory saved!');
+
 }
 
-/* Automatically refresh chat every 5 seconds */
-setInterval(loadMessages, 5000);
 
-/* Load chat when page opens */
-loadMessages();
+function renderMemories() {
 
+  const memories =
+    JSON.parse(localStorage.getItem('memories') || '[]');
 
-/* =========================
-   MEMORIES
-========================= */
+  const list =
+    document.getElementById('memoryList');
 
-let mem = JSON.parse(localStorage.getItem('atmMem') || '[]');
+  list.innerHTML = '';
 
-function renderMem() {
-  const memList = document.getElementById('memList');
+  memories.forEach((memory, index) => {
 
-  if (!memList) return;
+    const div =
+      document.createElement('div');
 
-  memList.innerHTML = mem.map(x =>
-    '<div class="item">' +
-    '<b>📸 ' + esc(x.t || '') + '</b>' +
-    '<p>' + esc(x.d || '') + '</p>' +
-    '</div>'
-  ).join('');
-}
+    div.className = 'memory';
 
-function addMemory() {
-  const title = document.getElementById('mt');
-  const description = document.getElementById('md');
+    div.innerHTML =
 
-  if (!title || !description) return;
+      '<div class="memory-title">' +
+      (memory.title || 'Our Memory ❤️') +
+      '</div>' +
 
-  const t = title.value.trim();
-  const d = description.value.trim();
+      '<div class="small">' +
+      memory.date +
+      '</div>' +
 
-  if (!t) return;
+      '<p>' +
+      (memory.text || '') +
+      '</p>' +
 
-  mem.push({
-    t: t,
-    d: d
+      (memory.image
+        ? '<img src="' + memory.image + '">'
+        : '') +
+
+      '<button onclick="deleteMemory(' +
+      index +
+      ')">Delete</button>';
+
+    list.appendChild(div);
+
   });
 
-  localStorage.setItem('atmMem', JSON.stringify(mem));
-
-  title.value = '';
-  description.value = '';
-
-  renderMem();
 }
 
 
-/* =========================
-   FUTURE TOGETHER
-========================= */
+function deleteMemory(index) {
 
-let fut = JSON.parse(localStorage.getItem('atmFut') || '[]');
+  const memories =
+    JSON.parse(localStorage.getItem('memories') || '[]');
 
-function renderFut() {
-  const futureList = document.getElementById('futureList');
+  memories.splice(index, 1);
 
-  if (!futureList) return;
+  localStorage.setItem(
+    'memories',
+    JSON.stringify(memories)
+  );
 
-  futureList.innerHTML = fut.map(x =>
-    '<div class="item row">' +
-    '<span>🌍 ' + esc(x) + '</span>' +
-    '</div>'
-  ).join('');
+  renderMemories();
+
 }
+
+
+/* FUTURE */
 
 function addFuture() {
-  const input = document.getElementById('futureInput');
 
-  if (!input) return;
+  const input =
+    document.getElementById('futureInput');
 
-  const value = input.value.trim();
+  const text =
+    input.value.trim();
 
-  if (!value) return;
+  if (!text) return;
 
-  fut.push(value);
+  const items =
+    JSON.parse(localStorage.getItem('futureItems') || '[]');
 
-  localStorage.setItem('atmFut', JSON.stringify(fut));
+  items.push(text);
+
+  localStorage.setItem(
+    'futureItems',
+    JSON.stringify(items)
+  );
 
   input.value = '';
 
-  renderFut();
+  renderFuture();
+
 }
 
 
-/* =========================
-   LOVE NOTE
-========================= */
+function renderFuture() {
 
-function saveNote() {
-  const note = document.getElementById('note');
+  const items =
+    JSON.parse(localStorage.getItem('futureItems') || '[]');
 
-  if (!note) return;
+  const list =
+    document.getElementById('futureList');
 
-  const value = note.value.trim();
+  list.innerHTML = '';
 
-  if (value) {
-    localStorage.setItem('atmNote', value);
-    alert('💌 Love note saved');
+  items.forEach((item, index) => {
+
+    const div =
+      document.createElement('div');
+
+    div.className = 'future-item';
+
+    div.innerHTML =
+      '🌍 ' + item +
+      '<br><button onclick="deleteFuture(' +
+      index +
+      ')">Delete</button>';
+
+    list.appendChild(div);
+
+  });
+
+}
+
+
+function deleteFuture(index) {
+
+  const items =
+    JSON.parse(localStorage.getItem('futureItems') || '[]');
+
+  items.splice(index, 1);
+
+  localStorage.setItem(
+    'futureItems',
+    JSON.stringify(items)
+  );
+
+  renderFuture();
+
+}
+
+
+/* LOVE NOTES */
+
+function saveLoveNote() {
+
+  const input =
+    document.getElementById('loveNote');
+
+  const text =
+    input.value.trim();
+
+  if (!text) return;
+
+  const notes =
+    JSON.parse(localStorage.getItem('loveNotes') || '[]');
+
+  notes.unshift({
+
+    text: text,
+
+    date: new Date().toLocaleDateString()
+
+  });
+
+  localStorage.setItem(
+    'loveNotes',
+    JSON.stringify(notes)
+  );
+
+  input.value = '';
+
+  renderLoveNotes();
+
+  alert('💌 Love note saved!');
+
+}
+
+
+function renderLoveNotes() {
+
+  const notes =
+    JSON.parse(localStorage.getItem('loveNotes') || '[]');
+
+  const list =
+    document.getElementById('loveNotes');
+
+  list.innerHTML = '';
+
+  notes.forEach((note, index) => {
+
+    const div =
+      document.createElement('div');
+
+    div.className = 'note-item';
+
+    div.innerHTML =
+      '💌 ' + note.text +
+      '<div class="small">' +
+      note.date +
+      '</div>' +
+
+      '<button onclick="deleteLoveNote(' +
+      index +
+      ')">Delete</button>';
+
+    list.appendChild(div);
+
+  });
+
+}
+
+
+function deleteLoveNote(index) {
+
+  const notes =
+    JSON.parse(localStorage.getItem('loveNotes') || '[]');
+
+  notes.splice(index, 1);
+
+  localStorage.setItem(
+    'loveNotes',
+    JSON.stringify(notes)
+  );
+
+  renderLoveNotes();
+
+}
+
+
+/* STARTUP */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const savedMood =
+    localStorage.getItem('mood');
+
+  if (savedMood) {
+
+    document.getElementById('currentMood').textContent =
+      'Current mood: ' + savedMood;
+
   }
-}
 
+  loadChat();
 
-/* =========================
-   STARTUP
-========================= */
+  renderMemories();
 
-renderMem();
-renderFut();
+  renderFuture();
 
-const savedNote = localStorage.getItem('atmNote');
+  renderLoveNotes();
 
-if (savedNote) {
-  const note = document.getElementById('note');
+});
 
-  if (note) {
-    note.value = savedNote;
-  }
-}
 </script>
+
 </body>
 </html>
