@@ -31,6 +31,8 @@
 <nav><button class="nav active" onclick="go('home',this)"><span>🏠</span>Home</button><button class="nav" onclick="go('chat',this)"><span>💬</span>Chat</button><button class="nav" onclick="go('memories',this)"><span>📸</span>Memories</button><button class="nav" onclick="go('future',this)"><span>🌍</span>Future</button><button class="nav" onclick="go('more',this)"><span>❤️</span>More</button></nav>
 </div>
 <script>
+  const SUPABASE_URL = 'https://ewxjtnpcyxofriatqn.supabase.co';
+const SUPABASE_ANON_KEY = sb_publishable_29IqpItQbH_z-4bzo0tQ5w_inTTGH50
 function go(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
 function clocks(){uk.textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'});zm.textContent=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Lusaka'})}clocks();setInterval(clocks,1000)
 document.querySelectorAll('.mood').forEach(x=>x.onclick=()=>{document.querySelectorAll('.mood').forEach(y=>y.classList.remove('active'));x.classList.add('active')})
