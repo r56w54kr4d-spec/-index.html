@@ -7,275 +7,316 @@
 <title>Always Together ❤️</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+:root{
+  --pink:#d86b9b;
+  --dark:#673b57;
+  --bg:#fff9fc;
+  --card:#ffffff;
+  --line:#efdce7;
+  --muted:#806f79;
 }
 
-body {
-  margin: 0;
-  background: #fff9fc;
-  color: #4a3040;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+body{
+  margin:0;
+  background:var(--bg);
+  color:#352b31;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-.app {
-  max-width: 950px;
-  margin: auto;
-  padding-bottom: 100px;
+.app{
+  max-width:950px;
+  margin:auto;
+  padding:0 16px 110px;
 }
 
-header {
-  padding: 25px 20px 15px;
-  text-align: center;
+header{
+  padding:28px 4px 20px;
 }
 
-.title {
-  font-size: 32px;
-  font-weight: 800;
-  color: #743b5b;
+.title{
+  font-size:32px;
+  font-weight:800;
+  color:var(--dark);
 }
 
-.sub {
-  color: #806f79;
-  margin-top: 5px;
+.sub{
+  color:var(--muted);
+  font-size:17px;
+  margin-top:5px;
 }
 
-.page {
-  display: none;
-  padding: 10px 20px;
+.page{
+  display:none;
 }
 
-.page.active {
-  display: block;
+.page.active{
+  display:block;
 }
 
-.hero,
-.card {
-  background: white;
-  border: 1px solid #efdce7;
-  border-radius: 25px;
-  padding: 25px;
-  margin-bottom: 18px;
-  box-shadow: 0 8px 25px rgba(100, 50, 80, 0.06);
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  margin:16px 0;
+  box-shadow:0 8px 25px rgba(100,50,80,.06);
 }
 
-.couple {
-  text-align: center;
+.hero{
+  text-align:center;
+  background:linear-gradient(135deg,#fff,#fff0f7);
 }
 
-.people {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
+.logo{
+  width:130px;
+  height:130px;
+  object-fit:cover;
+  border-radius:30px;
+  margin:0 auto 15px;
+  display:block;
+  box-shadow:0 8px 25px rgba(100,50,80,.15);
 }
 
-.person {
-  text-align: center;
+.couple{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
 }
 
-.avatar {
-  width: 85px;
-  height: 85px;
-  border-radius: 50%;
-  background: #f4dce8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  font-weight: bold;
-  margin: auto;
-  overflow: hidden;
+.person{
+  text-align:center;
 }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.avatar{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:#f3d6e4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:800;
+  color:var(--dark);
+  margin:auto;
+  border:4px solid white;
+  box-shadow:0 4px 15px rgba(100,50,80,.12);
 }
 
-.heart {
-  font-size: 35px;
+.heart{
+  font-size:38px;
 }
 
-.big {
-  font-size: 28px;
-  font-weight: 800;
-  color: #743b5b;
+.big{
+  font-size:30px;
+  font-weight:800;
+  color:var(--dark);
 }
 
-.small {
-  color: #806f79;
+.small{
+  color:var(--muted);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
 }
 
-button {
-  border: 0;
-  border-radius: 15px;
-  padding: 12px 18px;
-  background: #d86b9b;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  margin: 5px;
+@media(max-width:650px){
+  .grid{grid-template-columns:1fr}
+  .title{font-size:27px}
 }
 
-button:active {
-  transform: scale(0.97);
+h2,h3{
+  color:var(--dark);
 }
 
-.moods {
-  display: flex;
-  flex-wrap: wrap;
+button{
+  border:0;
+  border-radius:14px;
+  padding:12px 18px;
+  background:var(--pink);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.mood {
-  font-size: 25px;
-  background: #fff0f6;
-  color: #4a3040;
-  padding: 12px;
+button:active{
+  transform:scale(.98);
 }
 
-input,
-textarea {
-  width: 100%;
-  padding: 14px;
-  margin: 7px 0;
-  border: 1px solid #ead6e1;
-  border-radius: 12px;
-  font-size: 16px;
-  font-family: inherit;
+button.secondary{
+  background:#f7e5ee;
+  color:var(--dark);
 }
 
-textarea {
-  min-height: 110px;
-  resize: vertical;
+input,textarea{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  font-size:16px;
+  font-family:inherit;
+  margin:7px 0;
+  background:#fff;
 }
 
-.chat {
-  min-height: 200px;
-  max-height: 400px;
-  overflow-y: auto;
-  margin-bottom: 10px;
+textarea{
+  min-height:110px;
+  resize:vertical;
 }
 
-.message {
-  padding: 12px 15px;
-  border-radius: 18px;
-  margin: 8px 0;
-  max-width: 80%;
-  background: #f6e8ef;
+.moods{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:15px 0;
 }
 
-.message.me {
-  margin-left: auto;
-  background: #d86b9b;
-  color: white;
+.mood{
+  font-size:30px;
+  background:#fff4f8;
+  color:#333;
+  padding:10px 14px;
 }
 
-.message small {
-  display: block;
-  opacity: 0.7;
-  font-size: 11px;
-  margin-top: 4px;
+.current{
+  color:var(--muted);
+  margin-top:10px;
 }
 
-.memory {
-  border: 1px solid #efdce7;
-  border-radius: 18px;
-  padding: 15px;
-  margin: 15px 0;
-  background: #fffafd;
+.chat{
+  height:350px;
+  overflow-y:auto;
+  background:#fff8fb;
+  border-radius:18px;
+  padding:15px;
+  border:1px solid var(--line);
 }
 
-.memory img {
-  width: 100%;
-  max-height: 350px;
-  object-fit: cover;
-  border-radius: 15px;
-  margin-top: 10px;
+.message{
+  max-width:80%;
+  padding:12px 15px;
+  border-radius:18px;
+  margin:8px 0;
+  background:#f4e3ec;
 }
 
-.memory-title {
-  font-weight: bold;
-  font-size: 19px;
-  color: #743b5b;
+.message.me{
+  margin-left:auto;
+  background:#d86b9b;
+  color:white;
 }
 
-.future-item,
-.note-item {
-  background: #fff5f9;
-  border-radius: 15px;
-  padding: 15px;
-  margin: 10px 0;
+.message small{
+  display:block;
+  opacity:.7;
+  margin-top:4px;
 }
 
-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid #efdce7;
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  padding: 8px;
-  z-index: 100;
+.chatform{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
 }
 
-.nav {
-  background: transparent;
-  color: #806f79;
-  padding: 8px 12px;
-  margin: 0;
+.chatform input{
+  margin:0;
 }
 
-.nav.active {
-  color: #d04f88;
-  font-weight: bold;
+.memory{
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  margin:15px 0;
+  background:#fff;
 }
 
-.file-label {
-  display: inline-block;
-  background: #f4dce8;
-  color: #743b5b;
-  padding: 12px 18px;
-  border-radius: 15px;
-  cursor: pointer;
-  margin: 5px 0;
+.memory img{
+  width:100%;
+  max-height:350px;
+  object-fit:cover;
+  display:block;
 }
 
-#memoryPhoto {
-  display: none;
+.memory-content{
+  padding:15px;
 }
 
-@media (max-width: 650px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.locked{
+  background:#fff5f9;
+  border:2px dashed #e7a8c4;
+  border-radius:18px;
+  padding:20px;
+}
 
-  .people {
-    gap: 25px;
-  }
+.answer-status{
+  font-weight:700;
+  color:var(--dark);
+  margin:10px 0;
+}
 
-  .title {
-    font-size: 27px;
-  }
+.nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(255,255,255,.97);
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:10px 5px;
+  z-index:100;
+}
 
-  nav {
-    gap: 0;
-  }
+.nav button{
+  background:transparent;
+  color:#806f79;
+  padding:8px 10px;
+  font-size:13px;
+}
 
-  .nav {
-    font-size: 12px;
-    padding: 7px;
-  }
+.nav button.active{
+  color:var(--pink);
+  font-weight:800;
+}
+
+.nav span{
+  display:block;
+  font-size:23px;
+  line-height:25px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.notice{
+  padding:14px;
+  border-radius:14px;
+  background:#f8e9f1;
+  color:var(--dark);
+  margin:10px 0;
+}
+
+.file-label{
+  display:inline-block;
+  background:#f7e5ee;
+  color:var(--dark);
+  padding:12px 18px;
+  border-radius:14px;
+  cursor:pointer;
+  margin:8px 0;
+}
+
+#photoInput{
+  display:none;
 }
 </style>
 </head>
@@ -294,65 +335,126 @@ nav {
 <!-- HOME -->
 <section id="home" class="page active">
 
-<div class="hero">
-  <div class="people">
+<div class="card hero">
 
-    <div class="person">
-      <div class="avatar">N</div>
-      <b>Nik</b>
-      <div class="small">Liverpool 🇬🇧</div>
-    </div>
+<img src="IMG_4602.jpeg" class="logo" alt="Always Together logo">
 
-    <div class="heart">❤️</div>
+<div class="couple">
 
-    <div class="person">
-      <div class="avatar">T</div>
-      <b>Threasa</b>
-      <div class="small">Lusaka 🇿🇲</div>
-    </div>
+<div class="person">
+<div class="avatar">N</div>
+<h3>Nik 🇬🇧</h3>
+<div class="small">Liverpool, UK 🇬🇧</div>
+</div>
 
-  </div>
+<div class="heart">❤️</div>
 
-  <h3 style="text-align:center;margin-top:25px;">
-    Miles apart, but always close at heart ❤️
-  </h3>
+<div class="person">
+<div class="avatar">T</div>
+<h3>Threasa 🇿🇲</h3>
+<div class="small">Lusaka, Zambia 🇿🇲</div>
+</div>
+
+</div>
+
+<h3>Miles apart, but always close at heart ❤️</h3>
+
 </div>
 
 <div class="card">
-  <h3>📍 How Far Apart Are We?</h3>
-  <div class="big">≈ 5,200 miles</div>
-  <div class="small">Liverpool, UK → Lusaka, Zambia</div>
+
+<h2>📍 How Far Apart Are We?</h2>
+
+<div class="big">≈ 5,200 miles</div>
+
+<div class="small">
+Liverpool 🇬🇧, UK → Lusaka 🇿🇲, Zambia
+</div>
+
 </div>
 
 <div class="grid">
 
 <div class="card">
-  <h3>😊 Mood</h3>
 
-  <div class="moods">
-    <button class="mood" onclick="setMood('😊')">😊</button>
-    <button class="mood" onclick="setMood('🥰')">🥰</button>
-    <button class="mood" onclick="setMood('❤️')">❤️</button>
-    <button class="mood" onclick="setMood('😔')">😔</button>
-  </div>
+<h2>😊 Mood</h2>
 
-  <p id="currentMood" class="small"></p>
+<div class="moods">
+
+<button class="mood" onclick="setMood('😊')">😊</button>
+<button class="mood" onclick="setMood('🥰')">🥰</button>
+<button class="mood" onclick="setMood('😍')">😍</button>
+<button class="mood" onclick="setMood('❤️')">❤️</button>
+<button class="mood" onclick="setMood('😘')">😘</button>
+<button class="mood" onclick="setMood('💕')">💕</button>
+<button class="mood" onclick="setMood('🤗')">🤗</button>
+<button class="mood" onclick="setMood('😌')">😌</button>
+<button class="mood" onclick="setMood('😂')">😂</button>
+<button class="mood" onclick="setMood('🥹')">🥹</button>
+<button class="mood" onclick="setMood('😴')">😴</button>
+<button class="mood" onclick="setMood('😘')">😘</button>
+
+</div>
+
+<div class="current">
+Current mood: <span id="currentMood">😊</span>
+</div>
+
 </div>
 
 <div class="card">
-  <h3>💕 Virtual Hug</h3>
-  <p class="small">Send a little reminder that you're thinking of each other.</p>
-  <button onclick="sendHug()">Send Virtual Hug 🤗</button>
-  <p id="hugMessage"></p>
-</div>
+
+<h2>💞 Virtual Hug</h2>
+
+<p class="small">
+Send a little reminder that you're thinking of each other.
+</p>
+
+<button onclick="sendHug()">Send Virtual Hug 🤗</button>
+
+<div id="hugMessage" class="notice hidden"></div>
 
 </div>
 
+</div>
+
+<!-- DAILY QUESTION -->
 <div class="card">
-  <h3>❓ Daily Question</h3>
-  <div id="question" class="big" style="font-size:20px;">
-    What's one thing you're looking forward to doing together?
-  </div>
+
+<h2>❓ Daily Question</h2>
+
+<h3 id="dailyQuestion">
+What's one thing you're looking forward to doing together?
+</h3>
+
+<div class="locked">
+
+<p>
+🔒 Answer the question first. You won't see each other's answers until both of you have answered.
+</p>
+
+<input id="questionName" placeholder="Your name (Nik or Threasa)">
+
+<textarea id="questionAnswer" placeholder="Write your answer here..."></textarea>
+
+<button onclick="saveDailyAnswer()">Save My Answer ❤️</button>
+
+<div id="questionStatus" class="answer-status"></div>
+
+<div id="answersReveal" class="hidden">
+
+<hr>
+
+<h3>💞 Your Answers</h3>
+
+<div id="nikAnswer"></div>
+
+<div id="threasaAnswer"></div>
+
+</div>
+
+</div>
+
 </div>
 
 </section>
@@ -367,11 +469,17 @@ nav {
 
 <div id="chatbox" class="chat"></div>
 
+<div class="chatform">
+
 <input id="chatInput" placeholder="Write a message...">
 
-<button onclick="sendMessage()">Send Message 💕</button>
+<button onclick="sendMessage()">Send</button>
 
-<button onclick="clearChat()">Clear Chat</button>
+</div>
+
+<div class="small">
+Messages are saved on this device.
+</div>
 
 </div>
 
@@ -381,25 +489,33 @@ nav {
 <!-- MEMORIES -->
 <section id="memories" class="page">
 
-<h2>📸 Memories</h2>
+<h2>📸 Our Memories</h2>
 
 <div class="card">
+
+<h3>➕ Add a Memory</h3>
 
 <input id="memoryTitle" placeholder="Memory title">
 
 <textarea id="memoryText" placeholder="Write something about this memory..."></textarea>
 
-<label class="file-label" for="memoryPhoto">
-  📷 Add a Photo
+<label class="file-label" for="photoInput">
+📷 Choose a Photo
 </label>
 
-<input id="memoryPhoto" type="file" accept="image/*">
+<input id="photoInput" type="file" accept="image/*">
+
+<div id="photoName" class="small">
+No photo selected
+</div>
+
+<br>
 
 <button onclick="saveMemory()">Save Memory ❤️</button>
 
-<div id="memoryList"></div>
-
 </div>
+
+<div id="memoryList"></div>
 
 </section>
 
@@ -411,11 +527,25 @@ nav {
 
 <div class="card">
 
-<input id="futureInput" placeholder="Something we want to do together...">
+<h3>✈️ Our Next Adventure</h3>
 
-<button onclick="addFuture()">Add to Our Future ❤️</button>
+<input id="futureInput" placeholder="Where will we go together?">
+
+<button onclick="saveFuture()">Save Future Plan</button>
 
 <div id="futureList"></div>
+
+</div>
+
+<div class="card">
+
+<h3>💍 Dreams & Plans</h3>
+
+<textarea id="dreamInput" placeholder="Write something you dream of doing together..."></textarea>
+
+<button onclick="saveDream()">Save Dream ❤️</button>
+
+<div id="dreamList"></div>
 
 </div>
 
@@ -431,11 +561,25 @@ nav {
 
 <h3>💌 Love Notes</h3>
 
-<textarea id="loveNote" placeholder="Write a special love note..."></textarea>
+<textarea id="loveNote" placeholder="Write a little love note..."></textarea>
 
-<button onclick="saveLoveNote()">Save Love Note 💌</button>
+<button onclick="saveLoveNote()">Save Love Note 💕</button>
 
 <div id="loveNotes"></div>
+
+</div>
+
+<div class="card">
+
+<h3>🗑️ App Data</h3>
+
+<p class="small">
+This removes the saved data from this device.
+</p>
+
+<button class="secondary" onclick="clearAllData()">
+Clear Local Data
+</button>
 
 </div>
 
@@ -443,273 +587,296 @@ nav {
 
 </main>
 
+</div>
 
-<nav>
+
+<nav class="nav">
 
 <button class="nav active" onclick="go('home',this)">
-🏠<br>Home
+<span>🏠</span>
+Home
 </button>
 
 <button class="nav" onclick="go('chat',this)">
-💬<br>Chat
+<span>💬</span>
+Chat
 </button>
 
 <button class="nav" onclick="go('memories',this)">
-📸<br>Memories
+<span>📸</span>
+Memories
 </button>
 
 <button class="nav" onclick="go('future',this)">
-🌍<br>Future
+<span>🌍</span>
+Future
 </button>
 
 <button class="nav" onclick="go('more',this)">
-❤️<br>More
+<span>❤️</span>
+More
 </button>
 
 </nav>
 
-</div>
-
 
 <script>
 
-/* NAVIGATION */
+const STORAGE_PREFIX="alwaysTogether_";
 
-function go(id, button) {
+function getData(key, fallback){
+  try{
+    return JSON.parse(localStorage.getItem(STORAGE_PREFIX+key)) ?? fallback;
+  }catch(e){
+    return fallback;
+  }
+}
 
-  document.querySelectorAll('.page').forEach(page => {
-    page.classList.remove('active');
+function setData(key,value){
+  localStorage.setItem(STORAGE_PREFIX+key,JSON.stringify(value));
+}
+
+
+function go(page,button){
+
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
   });
 
-  document.getElementById(id).classList.add('active');
+  document.getElementById(page).classList.add("active");
 
-  document.querySelectorAll('.nav').forEach(nav => {
-    nav.classList.remove('active');
+  document.querySelectorAll(".nav button").forEach(b=>{
+    b.classList.remove("active");
   });
 
-  button.classList.add('active');
+  if(button){
+    button.classList.add("active");
+  }
+
+  window.scrollTo(0,0);
 }
 
 
-/* MOOD */
+function setMood(mood){
 
-function setMood(mood) {
+  document.getElementById("currentMood").textContent=mood;
 
-  localStorage.setItem('mood', mood);
-
-  document.getElementById('currentMood').textContent =
-    'Current mood: ' + mood;
-
-}
-
-
-/* VIRTUAL HUG */
-
-function sendHug() {
-
-  document.getElementById('hugMessage').textContent =
-    '🤗 Virtual hug sent! ❤️';
+  setData("mood",mood);
 
 }
 
 
-/* CHAT */
+function loadMood(){
 
-function loadChat() {
+  const mood=getData("mood","😊");
 
-  const messages =
-    JSON.parse(localStorage.getItem('chatMessages') || '[]');
+  document.getElementById("currentMood").textContent=mood;
 
-  const box = document.getElementById('chatbox');
+}
 
-  box.innerHTML = '';
 
-  messages.forEach(message => {
+function sendHug(){
 
-    const div = document.createElement('div');
+  const time=new Date().toLocaleString();
 
-    div.className = 'message ' +
-      (message.sender === 'Nik' ? 'me' : '');
+  setData("hug",time);
 
-    div.innerHTML =
-      '<b>' + message.sender + '</b><br>' +
-      message.text +
-      '<small>' + message.time + '</small>';
+  const box=document.getElementById("hugMessage");
+
+  box.textContent="🤗 Virtual hug sent! ❤️";
+
+  box.classList.remove("hidden");
+
+  setTimeout(()=>{
+    box.classList.add("hidden");
+  },3000);
+
+}
+
+
+function sendMessage(){
+
+  const input=document.getElementById("chatInput");
+
+  const text=input.value.trim();
+
+  if(!text)return;
+
+  const messages=getData("messages",[]);
+
+  messages.push({
+    text:text,
+    time:new Date().toLocaleString(),
+    sender:"You"
+  });
+
+  setData("messages",messages);
+
+  input.value="";
+
+  renderMessages();
+
+}
+
+
+function renderMessages(){
+
+  const box=document.getElementById("chatbox");
+
+  const messages=getData("messages",[]);
+
+  box.innerHTML="";
+
+  messages.forEach(message=>{
+
+    const div=document.createElement("div");
+
+    div.className="message me";
+
+    div.innerHTML=
+      escapeHTML(message.text)+
+      "<small>"+escapeHTML(message.sender)+" · "+
+      escapeHTML(message.time)+"</small>";
 
     box.appendChild(div);
 
   });
 
-  box.scrollTop = box.scrollHeight;
-}
-
-
-function sendMessage() {
-
-  const input =
-    document.getElementById('chatInput');
-
-  const text = input.value.trim();
-
-  if (!text) return;
-
-  const messages =
-    JSON.parse(localStorage.getItem('chatMessages') || '[]');
-
-  messages.push({
-
-    sender: 'Nik',
-
-    text: text,
-
-    time: new Date().toLocaleString()
-
-  });
-
-  localStorage.setItem(
-    'chatMessages',
-    JSON.stringify(messages)
-  );
-
-  input.value = '';
-
-  loadChat();
+  box.scrollTop=box.scrollHeight;
 
 }
 
 
-function clearChat() {
+function escapeHTML(text){
 
-  if (confirm('Delete all chat messages?')) {
+  const div=document.createElement("div");
 
-    localStorage.removeItem('chatMessages');
+  div.textContent=text;
 
-    loadChat();
-
-  }
+  return div.innerHTML;
 
 }
 
 
 /* MEMORIES */
 
-function saveMemory() {
+document.getElementById("photoInput").addEventListener("change",function(){
 
-  const title =
-    document.getElementById('memoryTitle').value.trim();
+  const file=this.files[0];
 
-  const text =
-    document.getElementById('memoryText').value.trim();
+  document.getElementById("photoName").textContent=
+    file ? "📷 "+file.name : "No photo selected";
 
-  const photo =
-    document.getElementById('memoryPhoto').files[0];
+});
 
-  if (!title && !text && !photo) {
 
-    alert('Please add a title, message or photo.');
+function saveMemory(){
+
+  const title=document.getElementById("memoryTitle").value.trim();
+
+  const text=document.getElementById("memoryText").value.trim();
+
+  const file=document.getElementById("photoInput").files[0];
+
+  if(!title && !text && !file){
+
+    alert("Please add a title, message or photo.");
 
     return;
 
   }
 
-  if (photo) {
+  const save=function(photo){
 
-    const reader = new FileReader();
+    const memories=getData("memories",[]);
 
-    reader.onload = function(e) {
+    memories.unshift({
 
-      saveMemoryData(
-        title,
-        text,
-        e.target.result
-      );
+      title:title || "Our Memory",
+
+      text:text,
+
+      photo:photo || "",
+
+      date:new Date().toLocaleDateString()
+
+    });
+
+    setData("memories",memories);
+
+    document.getElementById("memoryTitle").value="";
+
+    document.getElementById("memoryText").value="";
+
+    document.getElementById("photoInput").value="";
+
+    document.getElementById("photoName").textContent="No photo selected";
+
+    renderMemories();
+
+    alert("Memory saved ❤️");
+
+  };
+
+  if(file){
+
+    const reader=new FileReader();
+
+    reader.onload=function(e){
+
+      save(e.target.result);
 
     };
 
-    reader.readAsDataURL(photo);
+    reader.readAsDataURL(file);
 
-  } else {
+  }else{
 
-    saveMemoryData(title, text, '');
+    save("");
 
   }
 
 }
 
 
-function saveMemoryData(title, text, image) {
+function renderMemories(){
 
-  const memories =
-    JSON.parse(localStorage.getItem('memories') || '[]');
+  const list=document.getElementById("memoryList");
 
-  memories.unshift({
+  const memories=getData("memories",[]);
 
-    title: title,
+  list.innerHTML="";
 
-    text: text,
+  if(memories.length===0){
 
-    image: image,
+    list.innerHTML=
+      '<div class="card"><p class="small">No memories yet. Add your first one ❤️</p></div>';
 
-    date: new Date().toLocaleDateString()
+    return;
 
-  });
+  }
 
-  localStorage.setItem(
-    'memories',
-    JSON.stringify(memories)
-  );
+  memories.forEach((memory,index)=>{
 
-  document.getElementById('memoryTitle').value = '';
+    const div=document.createElement("div");
 
-  document.getElementById('memoryText').value = '';
+    div.className="memory";
 
-  document.getElementById('memoryPhoto').value = '';
+    div.innerHTML=
 
-  renderMemories();
+      memory.photo
+      ? '<img src="'+memory.photo+'" alt="Memory photo">'
+      : ""
 
-  alert('❤️ Memory saved!');
+      +
 
-}
-
-
-function renderMemories() {
-
-  const memories =
-    JSON.parse(localStorage.getItem('memories') || '[]');
-
-  const list =
-    document.getElementById('memoryList');
-
-  list.innerHTML = '';
-
-  memories.forEach((memory, index) => {
-
-    const div =
-      document.createElement('div');
-
-    div.className = 'memory';
-
-    div.innerHTML =
-
-      '<div class="memory-title">' +
-      (memory.title || 'Our Memory ❤️') +
-      '</div>' +
-
-      '<div class="small">' +
-      memory.date +
-      '</div>' +
-
-      '<p>' +
-      (memory.text || '') +
-      '</p>' +
-
-      (memory.image
-        ? '<img src="' + memory.image + '">'
-        : '') +
-
-      '<button onclick="deleteMemory(' +
-      index +
-      ')">Delete</button>';
+      '<div class="memory-content">'+
+      '<h3>📸 '+escapeHTML(memory.title)+'</h3>'+
+      '<p>'+escapeHTML(memory.text)+'</p>'+
+      '<div class="small">'+escapeHTML(memory.date)+'</div>'+
+      '<br>'+
+      '<button class="secondary" onclick="deleteMemory('+index+')">Delete</button>'+
+      '</div>';
 
     list.appendChild(div);
 
@@ -718,74 +885,151 @@ function renderMemories() {
 }
 
 
-function deleteMemory(index) {
+function deleteMemory(index){
 
-  const memories =
-    JSON.parse(localStorage.getItem('memories') || '[]');
+  const memories=getData("memories",[]);
 
-  memories.splice(index, 1);
+  memories.splice(index,1);
 
-  localStorage.setItem(
-    'memories',
-    JSON.stringify(memories)
-  );
+  setData("memories",memories);
 
   renderMemories();
+
+}
+
+
+/* DAILY QUESTION */
+
+function saveDailyAnswer(){
+
+  const name=document.getElementById("questionName").value.trim().toLowerCase();
+
+  const answer=document.getElementById("questionAnswer").value.trim();
+
+  if(name!=="nik" && name!=="threasa"){
+
+    alert("Please enter Nik or Threasa.");
+
+    return;
+
+  }
+
+  if(!answer){
+
+    alert("Please write an answer first.");
+
+    return;
+
+  }
+
+  const answers=getData("dailyAnswers",{
+
+    nik:"",
+
+    threasa:""
+
+  });
+
+  answers[name]=answer;
+
+  setData("dailyAnswers",answers);
+
+  document.getElementById("questionAnswer").value="";
+
+  updateQuestionStatus();
+
+}
+
+
+function updateQuestionStatus(){
+
+  const answers=getData("dailyAnswers",{
+
+    nik:"",
+
+    threasa:""
+
+  });
+
+  const status=document.getElementById("questionStatus");
+
+  const reveal=document.getElementById("answersReveal");
+
+  if(answers.nik && answers.threasa){
+
+    status.textContent="❤️ Both of you have answered! Your answers are now unlocked.";
+
+    reveal.classList.remove("hidden");
+
+    document.getElementById("nikAnswer").innerHTML=
+      "<strong>🇬🇧 Nik:</strong><p>"+
+      escapeHTML(answers.nik)+"</p>";
+
+    document.getElementById("threasaAnswer").innerHTML=
+      "<strong>🇿🇲 Threasa:</strong><p>"+
+      escapeHTML(answers.threasa)+"</p>";
+
+  }else if(answers.nik){
+
+    status.textContent="🇬🇧 Nik has answered. Waiting for 🇿🇲 Threasa... 🔒";
+
+    reveal.classList.add("hidden");
+
+  }else if(answers.threasa){
+
+    status.textContent="🇿🇲 Threasa has answered. Waiting for 🇬🇧 Nik... 🔒";
+
+    reveal.classList.add("hidden");
+
+  }else{
+
+    status.textContent="🔒 Neither answer has been submitted yet.";
+
+    reveal.classList.add("hidden");
+
+  }
 
 }
 
 
 /* FUTURE */
 
-function addFuture() {
+function saveFuture(){
 
-  const input =
-    document.getElementById('futureInput');
+  const input=document.getElementById("futureInput");
 
-  const text =
-    input.value.trim();
+  const text=input.value.trim();
 
-  if (!text) return;
+  if(!text)return;
 
-  const items =
-    JSON.parse(localStorage.getItem('futureItems') || '[]');
+  const plans=getData("futurePlans",[]);
 
-  items.push(text);
+  plans.unshift(text);
 
-  localStorage.setItem(
-    'futureItems',
-    JSON.stringify(items)
-  );
+  setData("futurePlans",plans);
 
-  input.value = '';
+  input.value="";
 
   renderFuture();
 
 }
 
 
-function renderFuture() {
+function renderFuture(){
 
-  const items =
-    JSON.parse(localStorage.getItem('futureItems') || '[]');
+  const list=document.getElementById("futureList");
 
-  const list =
-    document.getElementById('futureList');
+  const plans=getData("futurePlans",[]);
 
-  list.innerHTML = '';
+  list.innerHTML="";
 
-  items.forEach((item, index) => {
+  plans.forEach(plan=>{
 
-    const div =
-      document.createElement('div');
+    const div=document.createElement("div");
 
-    div.className = 'future-item';
+    div.className="notice";
 
-    div.innerHTML =
-      '🌍 ' + item +
-      '<br><button onclick="deleteFuture(' +
-      index +
-      ')">Delete</button>';
+    div.textContent="✈️ "+plan;
 
     list.appendChild(div);
 
@@ -794,86 +1038,98 @@ function renderFuture() {
 }
 
 
-function deleteFuture(index) {
+function saveDream(){
 
-  const items =
-    JSON.parse(localStorage.getItem('futureItems') || '[]');
+  const input=document.getElementById("dreamInput");
 
-  items.splice(index, 1);
+  const text=input.value.trim();
 
-  localStorage.setItem(
-    'futureItems',
-    JSON.stringify(items)
-  );
+  if(!text)return;
 
-  renderFuture();
+  const dreams=getData("dreams",[]);
+
+  dreams.unshift(text);
+
+  setData("dreams",dreams);
+
+  input.value="";
+
+  renderDreams();
+
+}
+
+
+function renderDreams(){
+
+  const list=document.getElementById("dreamList");
+
+  const dreams=getData("dreams",[]);
+
+  list.innerHTML="";
+
+  dreams.forEach(dream=>{
+
+    const div=document.createElement("div");
+
+    div.className="notice";
+
+    div.textContent="💭 "+dream;
+
+    list.appendChild(div);
+
+  });
 
 }
 
 
 /* LOVE NOTES */
 
-function saveLoveNote() {
+function saveLoveNote(){
 
-  const input =
-    document.getElementById('loveNote');
+  const input=document.getElementById("loveNote");
 
-  const text =
-    input.value.trim();
+  const text=input.value.trim();
 
-  if (!text) return;
+  if(!text)return;
 
-  const notes =
-    JSON.parse(localStorage.getItem('loveNotes') || '[]');
+  const notes=getData("loveNotes",[]);
 
   notes.unshift({
 
-    text: text,
+    text:text,
 
-    date: new Date().toLocaleDateString()
+    date:new Date().toLocaleString()
 
   });
 
-  localStorage.setItem(
-    'loveNotes',
-    JSON.stringify(notes)
-  );
+  setData("loveNotes",notes);
 
-  input.value = '';
+  input.value="";
 
   renderLoveNotes();
-
-  alert('💌 Love note saved!');
 
 }
 
 
-function renderLoveNotes() {
+function renderLoveNotes(){
 
-  const notes =
-    JSON.parse(localStorage.getItem('loveNotes') || '[]');
+  const list=document.getElementById("loveNotes");
 
-  const list =
-    document.getElementById('loveNotes');
+  const notes=getData("loveNotes",[]);
 
-  list.innerHTML = '';
+  list.innerHTML="";
 
-  notes.forEach((note, index) => {
+  notes.forEach(note=>{
 
-    const div =
-      document.createElement('div');
+    const div=document.createElement("div");
 
-    div.className = 'note-item';
+    div.className="notice";
 
-    div.innerHTML =
-      '💌 ' + note.text +
-      '<div class="small">' +
-      note.date +
-      '</div>' +
-
-      '<button onclick="deleteLoveNote(' +
-      index +
-      ')">Delete</button>';
+    div.innerHTML=
+      "💌 "+escapeHTML(note.text)+
+      "<div class='small'>"+
+      escapeHTML(note.date)+
+      "</div>";
 
     list.appendChild(div);
 
@@ -882,46 +1138,38 @@ function renderLoveNotes() {
 }
 
 
-function deleteLoveNote(index) {
+/* CLEAR DATA */
 
-  const notes =
-    JSON.parse(localStorage.getItem('loveNotes') || '[]');
+function clearAllData(){
 
-  notes.splice(index, 1);
+  if(confirm("Are you sure you want to clear all saved data on this device?")){
 
-  localStorage.setItem(
-    'loveNotes',
-    JSON.stringify(notes)
-  );
+    Object.keys(localStorage)
+      .filter(key=>key.startsWith(STORAGE_PREFIX))
+      .forEach(key=>localStorage.removeItem(key));
 
-  renderLoveNotes();
+    location.reload();
+
+  }
 
 }
 
 
-/* STARTUP */
+/* START */
 
-document.addEventListener('DOMContentLoaded', function() {
+loadMood();
 
-  const savedMood =
-    localStorage.getItem('mood');
+renderMessages();
 
-  if (savedMood) {
+renderMemories();
 
-    document.getElementById('currentMood').textContent =
-      'Current mood: ' + savedMood;
+updateQuestionStatus();
 
-  }
+renderFuture();
 
-  loadChat();
+renderDreams();
 
-  renderMemories();
-
-  renderFuture();
-
-  renderLoveNotes();
-
-});
+renderLoveNotes();
 
 </script>
 
